@@ -1,0 +1,32 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+
+include /usr/share/dpkg/architecture.mk
+include /usr/share/dpkg/buildflags.mk
+include /usr/share/dpkg/pkg-info.mk
+
+# Makefile doesn't honor CPPFLAGS
+CFLAGS += $(CPPFLAGS)
+
+export CFLAGS LDFLAGS
+
+VERBOSE = 1
+ifneq (,$(filter terse,$(DEB_BUILD_OPTIONS)))
+	VERBOSE = 0
+endif
+
+%:
+	dh $@
+
+override_dh_auto_build-arch:
+	$(MAKE) VERBOSE=$(VERBOSE) PREFIX=/usr LIBDIR=/usr/lib/$(DEB_HOST_MULTIARCH)
+
+override_dh_auto_install-arch:
+	$(MAKE) VERBOSE=$(VERBOSE) PREFIX=/usr LIBDIR=/usr/lib/$(DEB_HOST_MULTIARCH) DESTDIR=$(CURDIR)/debian/tmp install
+
+override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	$(MAKE) VERBOSE=$(VERBOSE) test
+endif

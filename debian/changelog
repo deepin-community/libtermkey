@@ -1,0 +1,78 @@
+libtermkey (0.22-1) unstable; urgency=medium
+
+  * New upstream release
+  * Remove obsolete dbgsym migration
+  * Support DEB_BUILD_OPTIONS=terse
+  * libtermkey1.symbols: Set Build-Depends-Package
+  * Switch to debhelper-compat and set to 12
+  * Declare compliance with Policy 4.4.1, no changes needed
+
+ -- James McCoy <jamessan@debian.org>  Fri, 20 Dec 2019 08:27:40 -0500
+
+libtermkey (0.20-3) unstable; urgency=medium
+
+  * Point Vcs-* to salsa.d.o
+  * Change Priority to optional, per Policy 4.0.1
+  * d/copyright: Use https URL for copyright format
+  * Bump debhelper compat to 11
+  * Skip tests if nocheck is in DEB_BUILD_OPTIONS
+  * Remove “-pie” from hardening options, so PIE is not disabled
+  * Set Rules-Requires-Root to no
+  * Declare compliance with Policy 4.1.3
+
+ -- James McCoy <jamessan@debian.org>  Sat, 24 Feb 2018 23:04:42 -0500
+
+libtermkey (0.20-2) unstable; urgency=medium
+
+  * Upload to unstable.
+  * Declare compliance with policy 4.0.0, no changes needed.
+
+ -- James McCoy <jamessan@debian.org>  Thu, 22 Jun 2017 22:41:44 -0400
+
+libtermkey (0.20-1) experimental; urgency=medium
+
+  * New upstream release
+    + Added support for DCS and OSC control sequences
+
+ -- James McCoy <jamessan@debian.org>  Wed, 26 Apr 2017 23:19:07 -0400
+
+libtermkey (0.19-1) unstable; urgency=medium
+
+  * New upstream release
+    + Drop backported patches
+
+ -- James McCoy <jamessan@debian.org>  Sat, 17 Dec 2016 19:02:20 -0500
+
+libtermkey (0.18-2) unstable; urgency=medium
+
+  * Declare compliance with Policy 3.9.8, no changes needed.
+  * Migrate to automatic dbgsym packages.
+  * Pass CPPFLAGS through CFLAGS, since upstream Makefile doesn't look at
+    CPPFLAGS.
+  * Mark libtermkey-dev M-A: same.
+  * Cherry-pick a few fixes from upstream:
+    + Correct handling of ASCII NUL to imply Ctrl-Space
+    + Bugfix for keypad mode switching
+    + Endian fix for unicode keys
+    + Include <unistd.h> for write+pipe
+
+ -- James McCoy <jamessan@debian.org>  Tue, 11 Oct 2016 19:44:44 -0400
+
+libtermkey (0.18-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- James McCoy <jamessan@debian.org>  Tue, 17 Nov 2015 20:54:45 -0500
+
+libtermkey (0.17-2) unstable; urgency=medium
+
+  * Build against unibilium rather than ncurses.
+  * Make libtermkey-dbg M-A: same
+
+ -- James McCoy <jamessan@debian.org>  Wed, 17 Jun 2015 23:54:30 -0400
+
+libtermkey (0.17-1) unstable; urgency=low
+
+  * Initial upload (Closes: #603298)
+
+ -- James McCoy <jamessan@debian.org>  Thu, 07 May 2015 23:30:15 -0400
